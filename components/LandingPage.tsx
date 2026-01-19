@@ -34,13 +34,16 @@ const LandingPage: React.FC<LandingPageProps> = ({
   return (
     <div className="bg-white overflow-hidden">
       {/* Nav */}
-      <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-[100] border-b border-slate-100">
+      <nav className="fixed top-0 w-full bg-white/90 backdrop-blur-xl z-[100] border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="bg-indigo-600 p-2 rounded-xl shadow-lg shadow-indigo-100">
-              <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+          <div className="flex items-center gap-3">
+            <div className="bg-gradient-to-br from-indigo-600 via-indigo-700 to-violet-800 p-2.5 rounded-[18px] shadow-xl shadow-indigo-200/50 flex items-center justify-center">
+              <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
             </div>
-            <span className="text-xl font-black text-slate-800 tracking-tight">NetworkBiz AI</span>
+            <div className="flex flex-col leading-none">
+              <span className="text-xl font-black text-slate-900 tracking-tighter">Netmarketer</span>
+              <span className="text-[10px] font-black text-indigo-600 uppercase tracking-[0.3em]">One Hub</span>
+            </div>
           </div>
           <div className="hidden md:flex items-center gap-8 text-sm font-bold text-slate-600">
             <a href="#features" className="hover:text-indigo-600 transition-colors">Features</a>
@@ -49,7 +52,7 @@ const LandingPage: React.FC<LandingPageProps> = ({
           </div>
           <div className="flex items-center gap-4">
             <button onClick={onLogin} className="text-sm font-bold text-slate-600 px-4 py-2 hover:text-indigo-600 transition-colors">Login</button>
-            <button onClick={onGetStarted} className="bg-indigo-600 text-white px-7 py-3 rounded-2xl text-sm font-black shadow-xl shadow-indigo-100 hover:bg-indigo-700 transition-all active:scale-95">Get Started</button>
+            <button onClick={onGetStarted} className="bg-slate-900 text-white px-7 py-3 rounded-2xl text-sm font-black shadow-xl hover:bg-indigo-600 transition-all active:scale-95">Get Started</button>
           </div>
         </div>
       </nav>
@@ -57,18 +60,18 @@ const LandingPage: React.FC<LandingPageProps> = ({
       {/* Hero */}
       <section className="pt-48 pb-32 px-6 relative text-center">
         <div className="max-w-5xl mx-auto">
-          <div className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-black uppercase tracking-[0.2em] mb-10">
-             ✨ 100% FREE AI COACHING FOR NETWORK MARKETERS
+          <div className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-slate-50 border border-slate-200 text-slate-400 text-[10px] font-black uppercase tracking-[0.25em] mb-10">
+             ⚡ The Pro-Standard for Networking
           </div>
           <h1 className="text-6xl md:text-8xl font-black text-slate-900 leading-[0.95] mb-10 tracking-tighter">
-            Stop Losing Leads. <br/><span className="text-indigo-600">Start Closing.</span>
+            Stop Losing Leads. <br/><span className="bg-gradient-to-r from-indigo-600 to-violet-700 bg-clip-text text-transparent">Start Closing.</span>
           </h1>
-          <p className="text-xl md:text-2xl text-slate-500 mb-16 max-w-2xl mx-auto leading-relaxed font-medium">
-            Professional AI-powered objection handling and smart CRM built to scale your networking empire. Now free for all community members.
+          <p className="text-xl md:text-2xl text-slate-500 mb-16 max-w-2xl mx-auto leading-relaxed font-medium italic">
+            "Professional AI-powered objection handling and smart CRM built to scale your networking empire."
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <button onClick={onGetStarted} className="w-full sm:w-auto px-12 py-6 bg-indigo-600 text-white rounded-[32px] text-xl font-black shadow-2xl shadow-indigo-100 hover:bg-indigo-700 transform hover:-translate-y-1 transition-all">
-              Launch Dashboard
+            <button onClick={onGetStarted} className="w-full sm:w-auto px-12 py-6 bg-indigo-600 text-white rounded-[32px] text-xl font-black shadow-2xl shadow-indigo-200 hover:bg-indigo-700 transform hover:-translate-y-1 transition-all">
+              Activate Dashboard
             </button>
           </div>
         </div>
@@ -78,18 +81,18 @@ const LandingPage: React.FC<LandingPageProps> = ({
       <section id="features" className="py-32 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20">
-            <h2 className="text-5xl font-black text-slate-900 mb-6 tracking-tight">Everything You Need <span className="text-indigo-600">To Grow.</span></h2>
+            <h2 className="text-5xl font-black text-slate-900 mb-6 tracking-tight">Premium Business <span className="text-indigo-600">Toolkit.</span></h2>
             <p className="text-slate-500 font-medium max-w-xl mx-auto italic">Scale your business with professional tools designed for network marketing leaders.</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               { name: 'Leads CRM', icon: '👤', desc: 'Manage your prospects, follow-ups, and conversion pipeline effortlessly.' },
-              { name: 'AI Objection Coach', icon: '🧠', desc: 'Get instant, word-for-word rebuttals for common objections like "No Money" or "No Time".' },
+              { name: 'AI Objection Coach', icon: '🧠', desc: 'Get instant, word-for-word rebuttals for common objections like \"No Money\" or \"No Time\".' },
               { name: 'Script Studio', icon: '✍️', desc: 'AI-generated calling and WhatsApp scripts that sound natural and close fast.' }
             ].map((feat, i) => (
               <div key={i} className="bg-white p-12 rounded-[56px] shadow-sm border border-slate-100 flex flex-col h-full transform transition hover:-translate-y-2 duration-500">
-                <div className="w-16 h-16 bg-indigo-50 rounded-2xl flex items-center justify-center text-3xl mb-8">{feat.icon}</div>
+                <div className="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center text-3xl mb-8 border border-slate-100">{feat.icon}</div>
                 <h3 className="text-xl font-black uppercase tracking-widest mb-4">{feat.name}</h3>
                 <p className="text-slate-500 font-medium leading-relaxed">{feat.desc}</p>
               </div>
@@ -102,7 +105,7 @@ const LandingPage: React.FC<LandingPageProps> = ({
       <section id="testimonials" className="py-32 bg-white">
         <div className="max-w-7xl mx-auto px-6">
            <div className="text-center mb-24">
-              <h2 className="text-5xl font-black text-slate-900 mb-4 tracking-tight">Closer <span className="text-indigo-600">Results.</span></h2>
+              <h2 className="text-5xl font-black text-slate-900 mb-4 tracking-tight">Elite <span className="text-indigo-600">Wall.</span></h2>
               <p className="text-slate-500 font-medium max-w-2xl mx-auto italic">Real professionals, real growth.</p>
            </div>
            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -121,17 +124,17 @@ const LandingPage: React.FC<LandingPageProps> = ({
       <footer className="py-24 border-t border-slate-100 bg-white">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-12">
           <div className="flex items-center gap-3">
-            <div className="bg-indigo-600 p-2.5 rounded-2xl">
-              <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+            <div className="bg-slate-900 p-2.5 rounded-[14px] flex items-center justify-center">
+              <svg className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
             </div>
-            <span className="text-xl font-black text-slate-900 tracking-tight">NetworkBiz AI</span>
+            <span className="text-xl font-black text-slate-900 tracking-tighter">Netmarketer One Hub</span>
           </div>
           <div className="flex gap-10 text-xs font-black text-slate-400 uppercase tracking-[0.2em]">
             <button onClick={onViewContact} className="hover:text-indigo-600">Support</button>
             <button onClick={onViewTerms} className="hover:text-indigo-600">Terms</button>
             <button onClick={onViewPrivacy} className="hover:text-indigo-600">Privacy</button>
           </div>
-          <p className="text-slate-400 text-sm font-medium">© 2024 NetworkBiz AI. 100% Free Tool.</p>
+          <p className="text-slate-400 text-sm font-medium">© 2024 Netmarketer One Hub. Premium Edition.</p>
         </div>
       </footer>
     </div>

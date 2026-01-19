@@ -8,10 +8,9 @@ interface OverviewProps {
   templates: MessageTemplate[];
   onTabSwitch: (tab: DashboardTab) => void;
   onShare: () => void;
-  onUpgrade?: () => void;
 }
 
-const Overview: React.FC<OverviewProps> = ({ user, leads, templates, onTabSwitch, onShare, onUpgrade }) => {
+const Overview: React.FC<OverviewProps> = ({ user, leads, templates, onTabSwitch, onShare }) => {
   const stats = {
     totalLeads: leads.length,
     pendingTasks: leads.filter(l => l.reminder && !l.reminder.completed).length,
@@ -25,8 +24,8 @@ const Overview: React.FC<OverviewProps> = ({ user, leads, templates, onTabSwitch
         <div>
           <div className="flex items-center gap-3 mb-3">
             <h1 className="text-4xl font-black text-slate-900">Namaste, {(user.name || '').split(' ')[0]} 👋</h1>
-            <span className={`px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest ${user.isPaid ? 'bg-indigo-600 text-white' : 'bg-slate-200 text-slate-600'}`}>
-              {user.plan} {user.isPaid ? '(Unlocked)' : '(Basic)'}
+            <span className="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-indigo-600 text-white">
+              Elite Edition
             </span>
           </div>
           <p className="text-lg text-slate-500 font-medium italic">"Ab closing hogi pehle se 3 guna zyada fast with AI."</p>
@@ -53,21 +52,17 @@ const Overview: React.FC<OverviewProps> = ({ user, leads, templates, onTabSwitch
           { label: "Elite Members", value: stats.communitySize, icon: "🔥", color: "bg-orange-50 text-orange-600", border: "ring-4 ring-orange-100/50" },
           { label: "Leads Database", value: stats.totalLeads, icon: "📂", color: "bg-blue-50 text-blue-600", border: "" },
           { label: "Closing Ratio", value: stats.conversionRate + "%", icon: "💎", color: "bg-emerald-50 text-emerald-600", border: "" },
-          { label: "Membership", value: user.plan, icon: "👑", color: "bg-indigo-50 text-indigo-600", border: "" }
+          { label: "Membership", value: "Business Elite", icon: "👑", color: "bg-indigo-50 text-indigo-600", border: "" }
         ].map((s, i) => (
           <div 
              key={i} 
-             onClick={s.label === "Membership" && onUpgrade ? onUpgrade : undefined}
-             className={`bg-white p-10 rounded-[48px] border border-slate-100 shadow-sm flex flex-col justify-between hover:shadow-xl transition-all relative overflow-hidden ${s.border} ${s.label === "Membership" ? 'cursor-pointer hover:bg-indigo-50' : ''}`}
+             className={`bg-white p-10 rounded-[48px] border border-slate-100 shadow-sm flex flex-col justify-between hover:shadow-xl transition-all relative overflow-hidden ${s.border}`}
           >
             <div className={`w-14 h-14 ${s.color} rounded-[22px] flex items-center justify-center text-2xl mb-8 shadow-sm`}>{s.icon}</div>
             <div>
               <p className="text-4xl font-black text-slate-900 mb-1">{s.value}</p>
               <p className="text-[11px] font-black text-slate-400 uppercase tracking-[0.2em]">{s.label}</p>
             </div>
-            {s.label === "Membership" && !user.isPaid && (
-               <div className="absolute top-6 right-6 text-[10px] font-black text-white bg-red-500 px-2 py-1 rounded-lg animate-pulse">UPGRADE</div>
-            )}
           </div>
         ))}
       </div>
@@ -106,7 +101,7 @@ const Overview: React.FC<OverviewProps> = ({ user, leads, templates, onTabSwitch
                 {[
                   { name: "Amit P.", company: "Vestige", position: "Diamond", text: "AI Script writing ne meri team ki growth triple kar di!" },
                   { name: "Sneha R.", company: "Amway", position: "Founder Platinum", text: "Objection handling ab bachon ka khel hai." },
-                  { name: "Rajat V.", company: "Herbalife", position: "Presidents Team", text: "Free membership ne mera business asan bana diya." }
+                  { name: "Rajat V.", company: "Herbalife", position: "Presidents Team", text: "Everything is super fast and easy to use." }
                 ].map((s, i) => (
                   <div key={i} className="flex gap-4 items-start p-4 bg-slate-50 rounded-3xl border border-slate-100">
                     <div className="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center font-black text-xs flex-shrink-0">{s.name[0]}</div>

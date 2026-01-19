@@ -72,8 +72,7 @@ const PaymentGate: React.FC<PaymentGateProps> = ({ onBack, onSubscribe }) => {
       originalPrice: 2399,
       period: '/year',
       description: 'The ultimate professional toolkit for networking leaders.',
-      color: 'bg-slate-900 text-white border-slate-800 shadow-xl',
-      // Added REAL working features here
+      color: 'bg-slate-900 text-white border-slate-800 shadow-xl ring-2 ring-yellow-400/50',
       extraFeatures: [
         "One-Click Excel Data Export 📊",
         "Lifetime Data Backup",
@@ -116,7 +115,7 @@ const PaymentGate: React.FC<PaymentGateProps> = ({ onBack, onSubscribe }) => {
       key: 'rzp_live_RZE7zHE3aNBe68', // LIVE KEY
       amount: currentFinalPrice * 100, // amount in paise
       currency: 'INR',
-      name: 'NetworkBiz AI',
+      name: 'Netmarketer One Hub',
       description: `Upgrade to ${selectedPlanId} Plan`,
       image: 'https://cdn-icons-png.flaticon.com/512/1055/1055644.png',
       handler: function (response: any) {
@@ -143,14 +142,14 @@ const PaymentGate: React.FC<PaymentGateProps> = ({ onBack, onSubscribe }) => {
     return (
       <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6 animate-in fade-in zoom-in-95 duration-300">
         <div className="bg-white rounded-[40px] w-full max-w-lg p-0 shadow-2xl border border-indigo-50 overflow-hidden">
-          <div className="bg-indigo-600 p-8 text-white flex justify-between items-center">
+          <div className="bg-slate-900 p-8 text-white flex justify-between items-center">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-md">
-                <svg className="h-7 w-7 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" /></svg>
+              <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center backdrop-blur-md">
+                <svg className="h-7 w-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
               </div>
               <div>
-                <h2 className="font-black text-xl">Payment Checkout</h2>
-                <p className="text-[10px] font-bold opacity-80 uppercase tracking-widest">Verified Razorpay Gateway</p>
+                <h2 className="font-black text-xl leading-none">Netmarketer</h2>
+                <p className="text-[10px] font-bold opacity-60 uppercase tracking-widest">Premium Activation</p>
               </div>
             </div>
             <button onClick={() => setStep('pricing')} className="p-2 hover:bg-white/10 rounded-full transition-colors">
@@ -161,7 +160,7 @@ const PaymentGate: React.FC<PaymentGateProps> = ({ onBack, onSubscribe }) => {
           <form onSubmit={handleRazorpayPayment} className="p-10 space-y-8">
             <div className="flex justify-between items-end pb-8 border-b border-slate-100">
               <div>
-                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Selected Membership</p>
+                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Membership Plan</p>
                 <h3 className="text-2xl font-black text-slate-800">{plan.name}</h3>
                 <p className="text-xs text-slate-500 font-medium italic">Duration: {plan.period.replace('/', '')}</p>
               </div>
@@ -209,7 +208,7 @@ const PaymentGate: React.FC<PaymentGateProps> = ({ onBack, onSubscribe }) => {
               <button 
                 type="submit" 
                 disabled={isProcessing}
-                className="w-full py-6 bg-indigo-600 text-white rounded-[28px] font-black text-xl shadow-2xl shadow-indigo-100 hover:bg-indigo-700 transition-all flex items-center justify-center gap-3 active:scale-95 disabled:opacity-50"
+                className="w-full py-6 bg-slate-900 text-white rounded-[28px] font-black text-xl shadow-2xl hover:bg-indigo-700 transition-all flex items-center justify-center gap-3 active:scale-95 disabled:opacity-50"
               >
                 {isProcessing ? (
                   <div className="w-8 h-8 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
@@ -239,10 +238,10 @@ const PaymentGate: React.FC<PaymentGateProps> = ({ onBack, onSubscribe }) => {
               Logout / Back
            </button>
            <div className="flex items-center gap-3">
-              <div className="bg-indigo-600 p-3 rounded-2xl shadow-xl shadow-indigo-100">
+              <div className="bg-slate-900 p-3 rounded-2xl shadow-xl">
                  <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
               </div>
-              <span className="text-2xl font-black text-slate-900 tracking-tighter">Account Activation</span>
+              <span className="text-2xl font-black text-slate-900 tracking-tighter">Activation Hub</span>
            </div>
         </div>
 
@@ -251,7 +250,7 @@ const PaymentGate: React.FC<PaymentGateProps> = ({ onBack, onSubscribe }) => {
             Choose Your <br/><span className="text-indigo-600 underline decoration-indigo-100 decoration-[10px] underline-offset-8">Growth Plan.</span>
           </h1>
           <p className="text-2xl text-slate-500 font-medium leading-relaxed max-w-2xl mx-auto italic">
-            Complete your registration to access the dashboard. <br/>Professional tools for networking leaders.
+            "Professional tools for serious networking leaders."
           </p>
         </div>
 
@@ -263,7 +262,7 @@ const PaymentGate: React.FC<PaymentGateProps> = ({ onBack, onSubscribe }) => {
             >
               {plan.recommended && (
                 <div className="absolute -top-7 left-1/2 -translate-x-1/2 bg-indigo-600 text-white px-10 py-3.5 rounded-full text-[12px] font-black uppercase tracking-[0.25em] shadow-2xl">
-                   Recommended Choice
+                   Professional Standard
                 </div>
               )}
               
@@ -275,7 +274,6 @@ const PaymentGate: React.FC<PaymentGateProps> = ({ onBack, onSubscribe }) => {
                   </span>
                 )}
                 
-                {/* Price Section with Strike-through Logic */}
                 <div className="flex flex-col items-center">
                   {plan.originalPrice && (
                      <span className={`text-xl font-bold line-through decoration-red-500 decoration-4 ${plan.id === 'Advance' ? 'text-indigo-200' : 'text-slate-500'}`}>
@@ -294,14 +292,13 @@ const PaymentGate: React.FC<PaymentGateProps> = ({ onBack, onSubscribe }) => {
               <div className="space-y-6 mb-16 flex-1">
                  {coreFeatures.map((f, i) => (
                     <div key={i} className="flex items-start gap-4 group">
-                       <div className={`mt-1.5 w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110 ${plan.id === 'Advance' ? 'bg-white/20 text-white' : 'bg-indigo-50 text-indigo-600'}`}>
+                       <div className={`mt-1.5 w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110 ${plan.id === 'Advance' ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-400'}`}>
                           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={4} d="M5 13l4 4L19 7" /></svg>
                        </div>
                        <span className="text-base font-bold opacity-80 leading-snug">{f}</span>
                     </div>
                  ))}
                  
-                 {/* Exclusive features for Business Elite */}
                  {plan.extraFeatures && plan.extraFeatures.map((f, i) => (
                     <div key={`extra-${i}`} className="flex items-start gap-4 group">
                        <div className="mt-1.5 w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 bg-yellow-400 text-slate-900 shadow-lg shadow-yellow-200 animate-pulse">
@@ -328,14 +325,14 @@ const PaymentGate: React.FC<PaymentGateProps> = ({ onBack, onSubscribe }) => {
           ))}
         </div>
 
-        <div className="p-16 bg-slate-50/80 backdrop-blur-md rounded-[100px] border-4 border-dashed border-indigo-100 flex flex-col md:flex-row items-center justify-between gap-12 group transition-all hover:border-indigo-300">
+        <div className="p-16 bg-slate-50/80 backdrop-blur-md rounded-[100px] border-4 border-dashed border-slate-100 flex flex-col md:flex-row items-center justify-between gap-12 group transition-all hover:border-indigo-300">
            <div className="max-w-2xl text-center md:text-left">
               <h3 className="text-4xl font-black text-slate-800 mb-5 tracking-tight group-hover:text-indigo-600 transition-colors">Special Yearly Promo! 🎁</h3>
-              <p className="text-xl text-slate-600 font-medium leading-relaxed">
+              <p className="text-xl text-slate-600 font-medium leading-relaxed italic">
                 Enter code <span className="text-indigo-600 font-black underline underline-offset-4 decoration-indigo-200">NISHA@300</span> on our Business Elite yearly plan to save an extra ₹300. That's a full year of growth for only ₹1199!
               </p>
            </div>
-           <div className="bg-white px-14 py-10 rounded-[50px] border-4 border-indigo-600 font-black text-indigo-600 text-3xl tracking-[0.4em] shadow-2xl transform transition group-hover:scale-110 group-hover:rotate-1">
+           <div className="bg-white px-14 py-10 rounded-[50px] border-4 border-slate-900 font-black text-slate-900 text-3xl tracking-[0.4em] shadow-2xl transform transition group-hover:scale-110 group-hover:rotate-1">
              NISHA@300
            </div>
         </div>

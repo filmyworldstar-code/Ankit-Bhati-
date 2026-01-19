@@ -5,21 +5,21 @@ import { User } from '../../types';
 interface ProfileProps {
   user: User;
   onUpdate: (user: User) => void;
-  onUpgrade: () => void;
 }
 
-const Profile: React.FC<ProfileProps> = ({ user, onUpdate, onUpgrade }) => {
+const Profile: React.FC<ProfileProps> = ({ user, onUpdate }) => {
   const [formData, setFormData] = useState({ name: user.name, email: user.email });
   const [saving, setSaving] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSaving(true);
+    // Mimic API delay
     setTimeout(() => {
       onUpdate({ ...user, ...formData });
       setSaving(false);
-      alert('Profile updated!');
-    }, 800);
+      alert('Profile updated successfully!');
+    }, 500);
   };
 
   return (
@@ -61,41 +61,38 @@ const Profile: React.FC<ProfileProps> = ({ user, onUpdate, onUpgrade }) => {
 
           <div className="bg-white rounded-[40px] p-10 border border-slate-100 shadow-sm">
              <h3 className="text-xl font-black text-slate-800 mb-6">Security</h3>
-             <button className="w-full py-4 px-6 border border-slate-100 rounded-2xl text-left flex items-center justify-between group hover:bg-slate-50 transition-all">
+             <div className="w-full py-4 px-6 border border-slate-100 rounded-2xl text-left flex items-center justify-between group hover:bg-slate-50 transition-all cursor-not-allowed">
                 <div>
                    <p className="font-black text-slate-700">Change Password</p>
-                   <p className="text-xs text-slate-400">Regularly updates helpful for security.</p>
+                   <p className="text-xs text-slate-400">Manage through Auth settings.</p>
                 </div>
-                <svg className="h-5 w-5 text-slate-300 group-hover:text-indigo-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
-             </button>
+                <svg className="h-5 w-5 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 00-2 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+             </div>
           </div>
         </div>
 
         <div className="lg:col-span-1 space-y-8">
-           <div className={`rounded-[40px] p-10 text-white relative overflow-hidden group ${user.isPaid ? 'bg-slate-900' : 'bg-slate-800'}`}>
+           <div className="rounded-[40px] p-10 text-white relative overflow-hidden group bg-slate-900">
               <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/20 rounded-full blur-2xl"></div>
               <p className="text-[10px] font-black uppercase tracking-widest text-indigo-400 mb-2">Membership Status</p>
-              <h4 className="text-3xl font-black mb-6">{user.plan} {user.isPaid ? 'Elite' : ''}</h4>
+              <h4 className="text-3xl font-black mb-6">Business Elite</h4>
               
               <div className="space-y-4 mb-8">
                  <div className="flex items-center gap-3">
-                    <div className={`w-2 h-2 rounded-full ${user.isPaid ? 'bg-emerald-400' : 'bg-orange-400'}`}></div>
+                    <div className="w-2 h-2 rounded-full bg-emerald-400"></div>
                     <span className="text-xs font-medium text-slate-300">
-                      {user.isPaid ? 'Features: All Unlocked' : 'Features: Limited'}
+                      Features: All Unlocked
+                    </span>
+                 </div>
+                 <div className="flex items-center gap-3">
+                    <div className="w-2 h-2 rounded-full bg-emerald-400"></div>
+                    <span className="text-xs font-medium text-slate-300">
+                      AI Coach: Unlimited
                     </span>
                  </div>
               </div>
 
-              {!user.isPaid ? (
-                <button 
-                  onClick={onUpgrade}
-                  className="w-full py-4 bg-indigo-600 text-white rounded-2xl font-black text-sm shadow-lg shadow-indigo-900 hover:bg-indigo-500 transition-all"
-                >
-                  Upgrade Now
-                </button>
-              ) : (
-                <p className="text-[10px] text-slate-500 italic">Plan active. Thank you for being an Elite member.</p>
-              )}
+              <p className="text-[10px] text-slate-500 italic">Account in good standing.</p>
            </div>
         </div>
       </div>
